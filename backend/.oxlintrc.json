@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["eslint", "import", "node", "unicorn", "typescript", "oxc"],
+  "options": {
+    "typeAware": true,
+    "typeCheck": true
+  },
+  "rules": {
+    "eslint/no-unused-vars": "off",
+    "typescript/explicit-function-return-type": "off",
+    "unicorn/no-empty-file": "off",
+    "unicorn/prefer-node-protocol": "error"
+
+    // "typescript/no-floating-promises": "error",
+    // "typescript/no-misused-promises": "error",
+    // "typescript/await-thenable": "error",
+    // "typescript/no-unsafe-assignment": "warn",
+    // "typescript/no-unsafe-call": "warn",
+    // "typescript/no-unsafe-member-access": "warn",
+    // "typescript/no-unsafe-return": "warn",
+    // "typescript/require-await": "error",
+    // "typescript/return-await": "error"
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  }
+}
