@@ -1,5 +1,7 @@
 import type { ZodError } from "zod";
 
+import stringify from "safe-stable-stringify";
+
 export function formatZodError(error: ZodError): Record<string, unknown> {
     const fieldErrors: Record<string, string[]> = {};
 
@@ -17,4 +19,14 @@ export function formatZodError(error: ZodError): Record<string, unknown> {
         type: "validation_error",
         errors: fieldErrors,
     };
+}
+
+export function getErrorMessage(error: unknown): string {
+    if (error instanceof Error) return error.message;
+
+    if (typeof error === "object" && error !== null) {
+        return stringify(error);
+    }
+
+    return String(error);
 }

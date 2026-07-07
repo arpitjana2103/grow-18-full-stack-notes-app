@@ -7,7 +7,7 @@ import { HTTPSTATUSCODE } from "../configs/http.config.js";
 import { logger } from "../configs/logger.config.js";
 import { ErrorCodeEnum } from "../enums/error-code.enum.js";
 import { AppError } from "../utils/errors/app-error.util.js";
-import { formatZodError } from "../utils/errors/format-zod-error.util.js";
+import { formatZodError } from "../utils/errors/format-error.util.js";
 import { sendResponse } from "../utils/response.util.js";
 
 // Middleware: Global error handler with env-based response strategy
