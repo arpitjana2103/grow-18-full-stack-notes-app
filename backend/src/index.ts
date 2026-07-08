@@ -14,6 +14,8 @@ import { HTTPSTATUSCODE } from "./configs/http.config.js";
 import { prisma } from "./libs/prisma.js";
 import { handleAsyncError } from "./middlewares/async-handler.middleware.js";
 import { handleGlobalError } from "./middlewares/global-error-handler.middleware.js";
+import authRoutes from "./routes/auth.route.js";
+import "./configs/passport.config.js";
 
 const app = express();
 
@@ -84,6 +86,9 @@ app.get(
         return;
     }),
 );
+
+const BASE_PATH = config.BASE_PATH;
+app.use(`${BASE_PATH}/auth`, authRoutes);
 
 // Middleware: Global error handler with env-based responses
 // - Routes errors to dev or prod handlers based on environment

@@ -7,6 +7,10 @@ export const config = {
     SESSION_SECRET: getEnv("SESSION_SECRET"),
     SESSION_EXPIRES_IN: getEnv("SESSION_EXPIRES_IN"),
 
+    GOOGLE_CLIENT_ID: getEnv("GOOGLE_CLIENT_ID"),
+    GOOGLE_CLIENT_SECRET: getEnv("GOOGLE_CLIENT_SECRET"),
+    BASE_PATH: getEnv("BASE_PATH", "/api"),
+
     BACKEND_ORIGIN: getEnv("BACKEND_ORIGIN"),
     get_BACKEND_GOOGLE_CALLBACK_URL: function (): string {
         return getEnv("BACKEND_GOOGLE_CALLBACK_URL").replace(
