@@ -1,4 +1,5 @@
 import "dotenv/config";
+import "./configs/passport.config.js";
 
 import type { Request, Response, NextFunction } from "express";
 import type { StringValue as msStringValue } from "ms";
@@ -13,9 +14,10 @@ import { config, runningOnProduction } from "./configs/app.config.js";
 import { HTTPSTATUSCODE } from "./configs/http.config.js";
 import { prisma } from "./libs/prisma.js";
 import { handleAsyncError } from "./middlewares/async-handler.middleware.js";
+import { authProtect } from "./middlewares/auth-protech.middleware.js";
 import { handleGlobalError } from "./middlewares/global-error-handler.middleware.js";
 import authRoutes from "./routes/auth.route.js";
-import "./configs/passport.config.js";
+import notesRoutes from "./routes/notes.route.js";
 
 const app = express();
 
@@ -89,6 +91,7 @@ app.get(
 
 const BASE_PATH = config.BASE_PATH;
 app.use(`${BASE_PATH}/auth`, authRoutes);
+app.use(`${BASE_PATH}/notes`, authProtect, notesRoutes);
 
 // Middleware: Global error handler with env-based responses
 // - Routes errors to dev or prod handlers based on environment
